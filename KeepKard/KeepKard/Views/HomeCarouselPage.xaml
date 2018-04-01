@@ -29,30 +29,30 @@
 
             </Grid>
 
-            <Image x:Name="QrCodeImage" Source="Icon_Qr.png" VerticalOptions="CenterAndExpand" IsVisible="True"></Image>
+            <Image x:Name="QrCodeImage" Source="Icon_Qr.png" VerticalOptions="CenterAndExpand" IsVisible="{Binding PersonalPage2.DataFrame}"/>
 
-            <Frame x:Name="PersonalDataFrame" VerticalOptions="FillAndExpand" IsVisible="True">
-                
+            <Frame x:Name="PersonalDataFrame" VerticalOptions="FillAndExpand" IsVisible="{Binding PersonalPage2.DataFrame}">
+
                 <Grid BackgroundColor="White" Padding="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60"></ColumnDefinition>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="30"></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Dados Habilitados"
+                    <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Dados Habilitados"
                        TextColor="Black" FontAttributes="Bold" 
                        HorizontalOptions="Start"></Label>
 
                     <Image Grid.Row="0" Grid.Column="2" Source="Icon_Edit.png" HorizontalOptions="End" VerticalOptions="Start">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                            <TapGestureRecognizer Command="{Binding EditProfile}" CommandParameter="Personal"/>
                         </Image.GestureRecognizers>
                     </Image>
 
@@ -64,7 +64,7 @@
                        TextColor="Gray" FontAttributes="Bold" 
                        HorizontalOptions="Start"></Label>
 
-                <Label Grid.Row="2" Grid.Column="0" Text="Telefone"
+                    <Label Grid.Row="2" Grid.Column="0" Text="Telefone"
                        TextColor="Black" FontAttributes="Bold" 
                        HorizontalOptions="Start"></Label>
 
@@ -84,17 +84,17 @@
 
             </Frame>
 
-            <Frame x:Name="PersonalEditFrame" VerticalOptions="FillAndExpand" IsVisible="False">
+            <Frame x:Name="PersonalEditFrame" VerticalOptions="FillAndExpand" IsVisible="{Binding PersonalPage2.EditFrame}">
 
                 <StackLayout VerticalOptions="FillAndExpand">
 
                     <Entry Text="{Binding PersonalProfile.Name}" TextColor="Gray" FontAttributes="Bold" FontSize="Small"></Entry>
 
                     <Button Text="Save" Margin="20" BackgroundColor="RoyalBlue" VerticalOptions="EndAndExpand"
-                            TextColor="White" Command="{Binding SavePersonalProfile}"></Button>
+                            TextColor="White" Command="{Binding SaveProfile}" CommandParameter="Personal"></Button>
 
                 </StackLayout>
-                
+
                 <!--
 
                     <Label Text="Editar Dados"
@@ -121,9 +121,11 @@
                         <Entry Grid.Row="1" Grid.Column="1" Text="Edgar Jastre" TextColor="Gray" FontAttributes="Bold" FontSize="Small"></Entry>
 
                         <Image x:Name="NameCheckBox" Grid.Row="1" Grid.Column="2" Scale=".7" Source="Icon_CheckBlank.png">
-                            --><!--<Image.GestureRecognizers>
+                            -->
+                <!--<Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="CheckBox_OnTapped"></TapGestureRecognizer>
-                            </Image.GestureRecognizers>--><!--
+                            </Image.GestureRecognizers>-->
+                <!--
                         </Image>
 
                         <Label Grid.Row="2" Grid.Column="0" Text="Telefone:"
@@ -133,9 +135,11 @@
                         <Entry Grid.Row="2" Grid.Column="1" Text="(47) 9988-7766" TextColor="Gray" FontAttributes="Bold"  FontSize="Small"></Entry>
 
                         <Image x:Name="NameCheckBox2" Grid.Row="2" Grid.Column="2" Scale=".7" Source="Icon_CheckBlank.png">
-                            --><!--<Image.GestureRecognizers>
+                            -->
+                <!--<Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="CheckBox_OnTapped"></TapGestureRecognizer>
-                            </Image.GestureRecognizers>--><!--
+                            </Image.GestureRecognizers>-->
+                <!--
                         </Image>
 
                         <Label Grid.Row="3" Grid.Column="0" Text="Email:"
@@ -145,9 +149,11 @@
                         <Entry Grid.Row="3" Grid.Column="1" Text="edvirtual@hotmail.com" TextColor="Gray" FontAttributes="Bold"  FontSize="Small"></Entry>
 
                         <Image x:Name="NameCheckBox3" Grid.Row="3" Grid.Column="2" Scale=".7" Source="Icon_CheckBlank.png">
-                            --><!--<Image.GestureRecognizers>
+                            -->
+                <!--<Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="CheckBox_OnTapped"></TapGestureRecognizer>
-                            </Image.GestureRecognizers>--><!--
+                            </Image.GestureRecognizers>-->
+                <!--
                         </Image>
                         
                     </Grid>
@@ -192,7 +198,7 @@
                 <Image Source="Icon_Empty.png" HeightRequest="64" WidthRequest="64" 
                        VerticalOptions="FillAndExpand" ></Image>
 
-            <Label Text="Kard vazio, vamos adicionar dados?" TextColor="Black" FontSize="20"  
+                <Label Text="Kard vazio, vamos adicionar dados?" TextColor="Black" FontSize="20"  
                    FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
 
                 <Button Text="Adicionar" Margin="20" TextColor="White" VerticalOptions="EndAndExpand"

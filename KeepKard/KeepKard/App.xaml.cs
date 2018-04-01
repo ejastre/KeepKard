@@ -36,7 +36,7 @@ namespace KeepKard
             containerRegistry.RegisterForNavigation<Home, HomeViewModel>();
             containerRegistry.RegisterForNavigation<PessoalPage>();
             containerRegistry.RegisterForNavigation<ProfessionalPage>();
-            containerRegistry.RegisterForNavigation<HomeCarouselPage>();
+            containerRegistry.RegisterForNavigation<HomeCarouselPage, HomeCarouselPageViewModel>();
         }
 
         protected override void OnStart ()
