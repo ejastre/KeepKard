@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="KeepKard.Views.HomeCarouselPage">
+
+    <ContentPage BackgroundColor="#DBECC0" Padding="0, 0, 15, 0">
+
+        <StackLayout Padding="20" BackgroundColor="#A7E5CE">
+
+            <Grid Padding="30" BackgroundColor="Transparent" HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Row="0" Grid.Column="0" Source="Icon_Card.png"></Image>
+
+                <Label Grid.Row="0" Grid.Column="1" Text="Kard" TextColor="RoyalBlue" FontSize="20" 
+                       FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+
+                <Label Grid.Row="0" Grid.Column="2" Text="Pessoal" TextColor="Black" FontSize="20" 
+                       FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+
+            </Grid>
+
+            <Image x:Name="QrCodeImage" Source="Icon_Qr.png" VerticalOptions="CenterAndExpand" IsVisible="True"></Image>
+
+            <Frame x:Name="PersonalDataFrame" VerticalOptions="FillAndExpand" IsVisible="True">
+                
+                <Grid BackgroundColor="White" Padding="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="30"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Dados Habilitados"
+                       TextColor="Black" FontAttributes="Bold" 
+                       HorizontalOptions="Start"></Label>
+
+                    <Image Grid.Row="0" Grid.Column="2" Source="Icon_Edit.png" HorizontalOptions="End" VerticalOptions="Start">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Nome"
+                       TextColor="Black" FontAttributes="Bold" 
+                       HorizontalOptions="Start"></Label>
+
+                    <Label Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="2" Text="{Binding PersonalProfile.Name}"
+                       TextColor="Gray" FontAttributes="Bold" 
+                       HorizontalOptions="Start"></Label>
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Telefone"
+                       TextColor="Black" FontAttributes="Bold" 
+                       HorizontalOptions="Start"></Label>
+
+                    <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding PersonalProfile.Phone}"
+                       TextColor="Gray" FontAttributes="Bold" 
+                       HorizontalOptions="Start"></Label>
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="Email"
+                           TextColor="Black" FontAttributes="Bold" 
+                           HorizontalOptions="Start"></Label>
+
+                    <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding PersonalProfile.Email}"
+                           TextColor="Gray" FontAttributes="Bold" 
+                           HorizontalOptions="Start"></Label>
+
+                </Grid>
+
+            </Frame>
+
+            <Frame x:Name="PersonalEditFrame" VerticalOptions="FillAndExpand" IsVisible="False">
+
+                <StackLayout VerticalOptions="FillAndExpand">
+
+                    <Entry Text="{Binding PersonalProfile.Name}" TextColor="Gray" FontAttributes="Bold" FontSize="Small"></Entry>
+
+                    <Button Text="Save" Margin="20" BackgroundColor="RoyalBlue" VerticalOptions="EndAndExpand"
+                            TextColor="White" Command="{Binding SavePersonalProfile}"></Button>
+
+                </StackLayout>
+                
+                <!--
+
+                    <Label Text="Editar Dados"
+                           TextColor="Black" FontAttributes="Bold" 
+                           HorizontalOptions="Start" BackgroundColor="LightBlue"></Label>
+
+                    <Grid BackgroundColor="White" Padding="0" ColumnSpan="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".25*"></ColumnDefinition>
+                            <ColumnDefinition Width=".60*"></ColumnDefinition>
+                            <ColumnDefinition Width=".15*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                       
+                        <Label Grid.Row="1" Grid.Column="0" Text="Nome:"
+                       TextColor="Black" FontAttributes="Bold" 
+                       HorizontalOptions="Start" VerticalOptions="Center"></Label>
+
+                        <Entry Grid.Row="1" Grid.Column="1" Text="Edgar Jastre" TextColor="Gray" FontAttributes="Bold" FontSize="Small"></Entry>
+
+                        <Image x:Name="NameCheckBox" Grid.Row="1" Grid.Column="2" Scale=".7" Source="Icon_CheckBlank.png">
+                            --><!--<Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CheckBox_OnTapped"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>--><!--
+                        </Image>
+
+                        <Label Grid.Row="2" Grid.Column="0" Text="Telefone:"
+                       TextColor="Black" FontAttributes="Bold" 
+                       HorizontalOptions="Start" VerticalOptions="Center"></Label>
+
+                        <Entry Grid.Row="2" Grid.Column="1" Text="(47) 9988-7766" TextColor="Gray" FontAttributes="Bold"  FontSize="Small"></Entry>
+
+                        <Image x:Name="NameCheckBox2" Grid.Row="2" Grid.Column="2" Scale=".7" Source="Icon_CheckBlank.png">
+                            --><!--<Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CheckBox_OnTapped"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>--><!--
+                        </Image>
+
+                        <Label Grid.Row="3" Grid.Column="0" Text="Email:"
+                           TextColor="Black" FontAttributes="Bold" 
+                           HorizontalOptions="Start" VerticalOptions="Center"></Label>
+
+                        <Entry Grid.Row="3" Grid.Column="1" Text="edvirtual@hotmail.com" TextColor="Gray" FontAttributes="Bold"  FontSize="Small"></Entry>
+
+                        <Image x:Name="NameCheckBox3" Grid.Row="3" Grid.Column="2" Scale=".7" Source="Icon_CheckBlank.png">
+                            --><!--<Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CheckBox_OnTapped"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>--><!--
+                        </Image>
+                        
+                    </Grid>
+
+                    <Button Text="Save" Margin="20" BackgroundColor="RoyalBlue" VerticalOptions="EndAndExpand"
+                            TextColor="White" Clicked="Button_OnClicked"></Button>
+
+                </StackLayout>-->
+
+            </Frame>
+
+        </StackLayout>
+
+    </ContentPage>
+
+    <ContentPage BackgroundColor="#A7E5CE" Padding="15, 0, 0, 0">
+
+        <StackLayout Padding="20" BackgroundColor="#DBECC0">
+
+            <Grid Padding="30" BackgroundColor="Transparent" HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Row="0" Grid.Column="0" Source="Icon_Card.png"></Image>
+
+                <Label Grid.Row="0" Grid.Column="1" Text="Kard" TextColor="RoyalBlue" FontSize="20" 
+                       FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+
+                <Label Grid.Row="0" Grid.Column="2" Text="Profissional" TextColor="Black" FontSize="20" 
+                       FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+
+            </Grid>
+
+            <StackLayout BackgroundColor="Transparent" VerticalOptions="FillAndExpand" Padding="25">
+
+                <Image Source="Icon_Empty.png" HeightRequest="64" WidthRequest="64" 
+                       VerticalOptions="FillAndExpand" ></Image>
+
+            <Label Text="Kard vazio, vamos adicionar dados?" TextColor="Black" FontSize="20"  
+                   FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
+
+                <Button Text="Adicionar" Margin="20" TextColor="White" VerticalOptions="EndAndExpand"
+                        BackgroundColor="RoyalBlue" Command="{Binding LoadCommand}"></Button>
+
+            </StackLayout>
+
+        </StackLayout>
+
+    </ContentPage>
+
+</CarouselPage>

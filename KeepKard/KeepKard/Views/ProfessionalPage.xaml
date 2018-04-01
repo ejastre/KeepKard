@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="KeepKard.Views.ProfessionalPage">
+
+
+    <StackLayout>
+
+        <Label Text="ProfessionalPage" TextColor="Black"></Label>
+
+
+        <Label Text="{Binding Name}" TextColor="{StaticResource HeadingTextColor}" HorizontalOptions="CenterAndExpand" FontSize="35"></Label>
+
+        <Button Text="Save" Margin="20" BackgroundColor="Aqua" Command="{Binding UpdateCommand}"></Button>
+
+
+        <Button Text="Load" Margin="20" BackgroundColor="RoyalBlue" Command="{Binding LoadCommand}"></Button>
+
+        <Label Text="{Binding Name}" TextColor="{StaticResource NormalTextColor}" HorizontalOptions="CenterAndExpand" FontSize="35"></Label>
+
+        <Label Text="{Binding Name}" TextColor="{StaticResource PageBackgroundColor}" HorizontalOptions="CenterAndExpand" FontSize="35"></Label>
+
+
+    </StackLayout>
+
+
+</ContentPage>
